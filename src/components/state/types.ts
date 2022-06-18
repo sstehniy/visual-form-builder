@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { IconBaseProps, IconType } from "react-icons";
+import { IconType } from "react-icons";
 
 export enum FORM_STATE {
   NOT_INITIALIZED,
@@ -17,7 +17,6 @@ export enum InputType {
   TEXT = "text",
   NUMBER = "number",
   PASSWORD = "password",
-  BUTTON = "button",
   CHECKBOX = "checkbox",
   RADIO = "radio",
   DATE = "date",
@@ -30,8 +29,6 @@ export enum InputType {
 export enum ContainerType {
   ROW = "row",
   COLUMN = "column",
-  CHECKBOX_GROUP = "checkbox-group",
-  RADIO_GROUP = "radio-group",
   FORM = "form",
 }
 
@@ -64,18 +61,22 @@ export enum ElementSize {
   LARGE,
 }
 
+export type ComplexValue = { value: string | number | null; label: string };
+
 export type InputDataType = {
   uid: string;
   inputType: InputType;
   name: string;
-  label: string | null;
-  additionalAttrs: InputAttribute;
-  style: CSSProperties;
-  data?: any;
-  icon: InputIconData | null;
+  label: string;
+  additionalAttrs?: InputAttribute;
+  style?: CSSProperties;
+  wrapperStyle?: CSSProperties;
+  data?: ComplexValue[];
+  icon?: InputIconData;
   size: ElementSize;
   validation: ValidationRules[] | null;
-  tooltip: string | null;
+  tooltip?: string;
+  parent: ContainerDataType | null;
 };
 
 export type InputProps = Omit<InputDataType, "uid" | "inputType">;

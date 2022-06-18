@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import { ElementSize, InputDataType, InputProps } from "../../../state/types";
 import { InputWrapper } from "./InputWrapper";
 
-export const TextInput = forwardRef<HTMLInputElement, InputProps>(
+export const NumberInput = forwardRef<HTMLInputElement, InputProps>(
   (props, ref) => {
     const { size, icon, additionalAttrs } = props;
 
@@ -79,7 +79,7 @@ export const TextInput = forwardRef<HTMLInputElement, InputProps>(
     const getIconProps = (size: ElementSize, icon: InputDataType["icon"]) => {
       if (!icon) return "";
       const iconClassname =
-        "absolute top-0 bottom-0 flex items-center justify-center shrink-0 text-slate-400 p-2 z-10 aspect-square";
+        "absolute top-0 bottom-0 flex items-center justify-center shrink-0 text-slate-400 p-2 z-10 aspect-square	";
       let iconSizeClassname!: string;
       let iconPositionSpecificClassname!: string;
       switch (size) {
@@ -117,7 +117,7 @@ export const TextInput = forwardRef<HTMLInputElement, InputProps>(
     return (
       <InputWrapper {...props}>
         <input
-          type="text"
+          type="number"
           ref={ref}
           className={`input input-bordered focus:input-primary ${getInputClassame(
             size,
@@ -135,4 +135,4 @@ export const TextInput = forwardRef<HTMLInputElement, InputProps>(
   }
 );
 
-TextInput.displayName = "TextInput";
+NumberInput.displayName = "NumberInput";

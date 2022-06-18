@@ -5,10 +5,10 @@ import { Button } from "../components/Button";
 export const SideDrawer: React.FC = () => {
   return (
     <div
-      className="h-full bg-slate-100"
+      className="h-full bg-slate-5 sticky top-0 shrink-0"
       style={{ width: "clamp(300px, 25%, 335px)" }}
     >
-      <div className="shadow-md py-4 mb-5 flex gap-2 items-center pl-9 text-zinc-700">
+      <div className="shadow-md py-4 mb-5 flex gap-2 items-center pl-12 text-zinc-700">
         <AiFillBuild className="text-4xl" />
         <h2 className="text-center  tracking-wide leading-2 font-medium  text-2xl">
           Form Builder
@@ -23,19 +23,21 @@ export const SideDrawer: React.FC = () => {
           <IoMdAddCircleOutline />
         </span>
       </button> */}
-      <Button
-        onClick={() => {
-          console.log("clicked");
-        }}
-        size="normal"
-        text="Create Form"
-        icon={{
-          icon: IoMdAddCircleOutline,
-          position: "after",
-          className: "text-xl",
-        }}
-        className="relative w-52 mx-auto bg-indigo-500 hover:bg-indigo-600 focus:bg-indigo-600 focus:ring-indigo-800"
-      />
+      <div className="px-3">
+        <Button
+          onClick={() => {
+            console.log("clicked");
+          }}
+          size="normal"
+          text="Create Form"
+          icon={{
+            icon: IoMdAddCircleOutline,
+            position: "after",
+            className: "text-xl",
+          }}
+          className="relative btn-block bg-indigo-600 hover:bg-indigo-700 focus:bg-indigo-700 focus:ring-indigo-800 "
+        />
+      </div>
       <div
         className="mt-3 w-100"
         style={{ maxHeight: "calc(100% - 138px)", overflow: "auto" }}

@@ -3,7 +3,7 @@ import { SideDrawer } from "./components/SideDrawer";
 
 function App() {
   return (
-    <div className="h-screen flex">
+    <div className="flex">
       <SideDrawer />
       <FormView />
     </div>

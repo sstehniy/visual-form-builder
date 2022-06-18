@@ -2,30 +2,18 @@ import React, { useState } from "react";
 import { BiInfoCircle } from "react-icons/bi";
 import { ElementSize, InputProps } from "../../../state/types";
 
-export const InputWrapper: React.FC<React.PropsWithChildren<InputProps>> = ({
-  children,
-  ...childProps
-}) => {
+export const InputWrapper: React.FC<
+  React.PropsWithChildren<Partial<InputProps>>
+> = ({ children, ...childProps }) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const getLabelClassName = () => {
-    switch (childProps.size) {
-      case ElementSize.SMALL:
-        return "block text-gray-600 text-sm font-medium mb-0";
-      case ElementSize.NORMAL:
-        return "block text-gray-600 text-base font-medium mb-0.5";
-      case ElementSize.LARGE:
-        return "block text-gray-600 text-base font-medium mb-1";
-    }
-  };
-
-  const { style, label, name, tooltip } = childProps;
+  const { wrapperStyle, label, name, tooltip } = childProps;
   return (
-    <div style={{ ...style }}>
+    <div className="mb-4 " style={{ ...wrapperStyle }}>
       <div className="relative flex justify-between">
         {label && (
-          <label className={getLabelClassName()} htmlFor={name}>
-            {label}
+          <label className="label" htmlFor={name}>
+            <span className="label-text">{label}</span>
           </label>
         )}
         {tooltip && (
@@ -43,14 +31,15 @@ export const InputWrapper: React.FC<React.PropsWithChildren<InputProps>> = ({
               onMouseLeave={() => {
                 setShowTooltip(false);
               }}
-              className="cursor-pointer text-xl text-slate-500"
+              className="cursor-pointer text-lg mt-0.5 text-slate-500"
             />
             {!!tooltip && showTooltip && (
               <div
-                className="absolute left-1/2 -translate-x-1/2 p-2 text-center shadow bg-slate-600 text-white rounded text-sm"
+                className="absolute left-1/2 -translate-x-1/2 py-2 px-3 text-center shadow bg-slate-600 text-white rounded text-sm z-50"
                 style={{
                   bottom: "calc(100% + 5px)",
-                  minWidth: 100,
+                  maxWidth: 250,
+                  minWidth: 125,
                 }}
               >
                 {tooltip}
@@ -59,7 +48,7 @@ export const InputWrapper: React.FC<React.PropsWithChildren<InputProps>> = ({
           </div>
         )}
       </div>
-      {children}
+      <div className="relative form-control w-full">{children}</div>
     </div>
   );
 };

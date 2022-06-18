@@ -1,0 +1,11 @@
+.file::file-selector-button {
+    padding: .2em .4em;
+    border-radius: .2em;
+    transition: 1s;
+    border: none;
+    @apply btn btn-sm rounded-md mr-2 bg-primary
+}
+
+.file::file-selector-button:hover {
+    @apply btn btn-sm rounded-md mr-2 bg-accent
+}

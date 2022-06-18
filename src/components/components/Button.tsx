@@ -18,22 +18,21 @@ export const Button: React.FC<ButtonProps> = ({
   className,
 }) => {
   const getButtonClassName = () => {
-    const baseClassName =
-      "flex items-center justify-center gap-2 rounded-lg text-white font-medium transition-colors duration-150 focus:ring-2 focus:ring-offset-2";
+    const baseClassName = "btn flex gap-2 focus:ring-2 focus:ring-offset-2";
     let sizeClassNames!: string;
     let iconClassNames!: string;
 
     switch (size) {
       case "small": {
-        sizeClassNames = "h-8 px-4 text-sm shadow-md";
+        sizeClassNames = "btn-sm";
         break;
       }
       case "normal": {
-        sizeClassNames = "h-10 px-5 text-base shadow-lg";
+        sizeClassNames = "btn";
         break;
       }
       case "large": {
-        sizeClassNames = "h-12 px-6 text-lg shadow-lg";
+        sizeClassNames = "btn-lg";
         break;
       }
       default:
