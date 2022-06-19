@@ -11,20 +11,20 @@ export const PasswordInput = forwardRef<
   const { size, additionalAttrs } = props;
 
   const getInputClassame = (size: InputDataType["size"]) => {
-    const baseStyle = `w-full border-2 tracking-wide`;
+    const baseStyle = `w-full border-2 tracking-widest`;
     let sizeClassnames = "";
     let iconSpecificClassnames = "";
     switch (size) {
       case ElementSize.SMALL: {
-        sizeClassnames = "text-sm rounded px-3 py-1";
+        sizeClassnames = "input-sm";
         break;
       }
       case ElementSize.NORMAL: {
-        sizeClassnames = "text-base rounded-md px-3 py-1.5";
+        sizeClassnames = "input-md";
         break;
       }
       case ElementSize.LARGE: {
-        sizeClassnames = "text-lg rounded-lg px-3.5 py-1.5";
+        sizeClassnames = "input-lg";
         break;
       }
       default:
@@ -53,7 +53,7 @@ export const PasswordInput = forwardRef<
 
   const getIconProps = (size: ElementSize) => {
     const iconClassname =
-      "absolute top-1/2 -translate-y-1/2  flex items-center justify-center shrink-0 text-current z-10 aspect-square right-0 rounded-full p-1.5 hover:bg-slate-200 cursor-pointer transition-colors duration-150 ease text-slate-400";
+      "absolute top-1/2 -translate-y-1/2  flex items-center justify-center shrink-0 z-10 aspect-square right-0 rounded-full p-1.5 hover:bg-slate-300 cursor-pointer opacity-50 transition-colors duration-150 ease";
     let iconSizeClassname!: string;
 
     switch (size) {
@@ -62,7 +62,7 @@ export const PasswordInput = forwardRef<
         break;
       }
       case ElementSize.NORMAL: {
-        iconSizeClassname = " text-xl right-3";
+        iconSizeClassname = " text-xl right-2";
         break;
       }
       case ElementSize.LARGE: {

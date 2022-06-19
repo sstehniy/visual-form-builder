@@ -24,6 +24,7 @@ export enum InputType {
   FILE = "file",
   TEXTAREA = "textarea",
   SELECT = "select",
+  TOGGLE = "toggle",
 }
 
 export enum ContainerType {

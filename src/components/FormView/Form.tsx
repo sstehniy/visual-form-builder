@@ -9,6 +9,7 @@ import {
   RangeInput,
   TextareaInput,
   FileInput,
+  ToggleInput,
 } from "./FormComponents/Inputs";
 import { CgDollar, MdAllInbox } from "react-icons/all";
 import { SelectInput } from "./FormComponents/Inputs/SelectInput";
@@ -112,6 +113,12 @@ export const Form = () => {
         size={ElementSize.NORMAL}
         wrapperStyle={{ width: "100%" }}
         tooltip="Test password"
+        parent={null}
+        validation={[]}
+      />
+      <ToggleInput
+        label="Toggle it?"
+        name="checkdata"
         parent={null}
         validation={[]}
       />

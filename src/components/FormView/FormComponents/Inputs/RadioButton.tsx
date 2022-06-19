@@ -31,7 +31,7 @@ export const RadioButton = forwardRef<
               <label htmlFor={`${name}_${val.value}`} className="label">
                 <input
                   type="radio"
-                  className={`radio checked:bg-blue-500 `}
+                  className={`radio radio-primary`}
                   value={val.value || ""}
                   name={name}
                   id={`${name}_${val.value}`}

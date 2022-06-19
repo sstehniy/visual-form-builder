@@ -35,7 +35,7 @@ export const SideDrawer: React.FC = () => {
             position: "after",
             className: "text-xl",
           }}
-          className="relative btn-block bg-indigo-600 hover:bg-indigo-700 focus:bg-indigo-700 focus:ring-indigo-800 "
+          className="relative btn-block btn-primary focus:ring-primary"
         />
       </div>
       <div

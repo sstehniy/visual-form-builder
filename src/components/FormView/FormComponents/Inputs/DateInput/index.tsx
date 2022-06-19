@@ -17,20 +17,20 @@ export const DateInput = forwardRef<HTMLInputElement, Omit<InputProps, "icon">>(
     const { size, additionalAttrs } = props;
 
     const getInputClassame = (size: InputDataType["size"]) => {
-      const baseStyle = `w-full border-2 tracking-wide cursor-pointer`;
+      const baseStyle = `w-full border-2 cursor-pointer`;
       let sizeClassnames = "";
       let iconSpecificClassnames = "";
       switch (size) {
         case ElementSize.SMALL: {
-          sizeClassnames = "text-sm rounded px-3 py-1";
+          sizeClassnames = "input-sm";
           break;
         }
         case ElementSize.NORMAL: {
-          sizeClassnames = "text-base rounded-md px-3 py-1.5";
+          sizeClassnames = "input-md";
           break;
         }
         case ElementSize.LARGE: {
-          sizeClassnames = "text-lg rounded-lg px-3.5 py-1.5";
+          sizeClassnames = "input-lg";
           break;
         }
         default:
@@ -53,13 +53,12 @@ export const DateInput = forwardRef<HTMLInputElement, Omit<InputProps, "icon">>(
         default:
           break;
       }
-
       return `${baseStyle} ${sizeClassnames} ${iconSpecificClassnames}`;
     };
 
     const getIconProps = (size: ElementSize) => {
       const iconClassname =
-        "absolute top-0 bottom-0 flex items-center justify-center shrink-0 text-slate-400 p-2 z-10";
+        "absolute top-0 bottom-0 flex items-center justify-center shrink-0 opacity-50 p-1.5  hrink-0 z-10";
       let iconSizeClassname!: string;
 
       switch (size) {
@@ -68,7 +67,7 @@ export const DateInput = forwardRef<HTMLInputElement, Omit<InputProps, "icon">>(
           break;
         }
         case ElementSize.NORMAL: {
-          iconSizeClassname = " text-xl right-3";
+          iconSizeClassname = " text-xl right-2";
           break;
         }
         case ElementSize.LARGE: {

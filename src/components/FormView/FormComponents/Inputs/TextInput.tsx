@@ -10,7 +10,7 @@ export const TextInput = forwardRef<HTMLInputElement, InputProps>(
       size: InputDataType["size"],
       icon: InputDataType["icon"]
     ) => {
-      const baseStyle = `w-full border-2 bg-white`;
+      const baseStyle = `w-full border-2`;
       let sizeClassnames = "";
       let iconSpecificClassnames = "";
       switch (size) {
@@ -79,7 +79,7 @@ export const TextInput = forwardRef<HTMLInputElement, InputProps>(
     const getIconProps = (size: ElementSize, icon: InputDataType["icon"]) => {
       if (!icon) return "";
       const iconClassname =
-        "absolute top-0 bottom-0 flex items-center justify-center shrink-0 text-slate-400 p-2 z-10 aspect-square";
+        "absolute top-0 bottom-0 flex items-center justify-center shrink-0 opacity-50 p-2 z-10 aspect-square";
       let iconSizeClassname!: string;
       let iconPositionSpecificClassname!: string;
       switch (size) {

@@ -8,7 +8,7 @@ export const TextareaInput = forwardRef<
   Omit<InputProps, "icon" | "size">
 >((props, ref) => {
   const getInputClassame = () => {
-    const baseStyle = `w-full border-2 tracking-wide pr-12 text-base rounded-md px-3 py-1.5`;
+    const baseStyle = `w-full border-2 tracking-wide pr-12 text-base px-3 py-1.5`;
 
     return baseStyle;
   };

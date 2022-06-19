@@ -7,3 +7,4 @@ export * from "./DateInput";
 export * from "./RangeInput";
 export * from "./TextareaInput";
 export * from "./FileInput";
+export * from "./ToggleInput";

@@ -1,6 +1,6 @@
 import { forwardRef, useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import { ComplexValue, InputProps } from "../../../state/types";
+import { ComplexValue, ElementSize, InputProps } from "../../../state/types";
 import { InputWrapper } from "./InputWrapper";
 
 const defaultValue: ComplexValue = {
@@ -17,13 +17,14 @@ export const SelectInput = forwardRef<
   const [showOptions, setShowOptions] = useState(false);
 
   const getInputClassame = () => {
-    const baseStyle = `w-full border-2 tracking-wide pr-12 text-base rounded-md px-3 py-1.5`;
+    const baseStyle = `w-full border-2 bg-white pr-12 input-md`;
+    let sizeClassnames!: string;
 
-    return baseStyle;
+    return baseStyle + " " + sizeClassnames;
   };
 
   const getIconProps = () => {
-    const iconClassname = `absolute top-1/2 -translate-y-1/2  flex items-center justify-center shrink-0 text-current z-10 aspect-square right-0 rounded-full p-1.5 cursor-pointer text-xl right-3 ${
+    const iconClassname = `absolute top-1/2 -translate-y-1/2  flex items-center justify-center shrink-0 opacity-50 z-10 aspect-square right-0 rounded-full p-1.5 cursor-pointer text-xl right-3 ${
       showOptions ? "rotate-180" : ""
     } transition-transform duration-300 ease`;
 
@@ -44,14 +45,12 @@ export const SelectInput = forwardRef<
           />
         </div> */}
       <div
-        className={`dropdown dropdown-top ${
-          showOptions ? "dropdown-open" : ""
-        }`}
+        className={`dropdown ${showOptions ? "dropdown-open" : ""}`}
         style={{ ...style }}
       >
         <label
           htmlFor={name}
-          className="cursor-pointer label relative px-0"
+          className="cursor-pointer label relative p-0"
           onClick={() => setShowOptions((prev) => !prev)}
         >
           <input
@@ -63,19 +62,15 @@ export const SelectInput = forwardRef<
             id={`${name}_select`}
           />
           <div className={getIconProps()}>
-            {showOptions ? (
-              <FaChevronUp fill="rgb(148 163 184)" />
-            ) : (
-              <FaChevronDown fill="rgb(148 163 184)" />
-            )}
+            {showOptions ? <FaChevronUp /> : <FaChevronDown />}
           </div>
         </label>
 
         <ul
           tabIndex={0}
-          className={`dropdown-content menu p-2 shadow-lg bg-base-100 rounded-box w-3/4 max-h-44 overflow-y-scroll ${
+          className={`dropdown-content  menu p-2 shadow-2xl bg-base-100 rounded-md ring-2 ring-primary w-3/4 max-h-44 overflow-y-scroll ${
             !showOptions ? "hidden" : ""
-          }`}
+          } top-14 left-0.5`}
         >
           {[defaultValue, ...data].map((val) => (
             <li

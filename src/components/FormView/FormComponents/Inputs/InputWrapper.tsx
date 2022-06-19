@@ -10,7 +10,7 @@ export const InputWrapper: React.FC<
   const { wrapperStyle, label, name, tooltip } = childProps;
   return (
     <div className="mb-4 " style={{ ...wrapperStyle }}>
-      <div className="relative flex justify-between">
+      <div className="relative flex justify-between items-center">
         {label && (
           <label className="label" htmlFor={name}>
             <span className="label-text">{label}</span>
@@ -18,31 +18,36 @@ export const InputWrapper: React.FC<
         )}
         {tooltip && (
           <div className="relative">
-            <BiInfoCircle
-              onPointerEnter={() => {
-                setShowTooltip(true);
-              }}
-              onPointerLeave={() => {
-                setShowTooltip(false);
-              }}
-              onMouseEnter={() => {
-                setShowTooltip(true);
-              }}
-              onMouseLeave={() => {
-                setShowTooltip(false);
-              }}
-              className="cursor-pointer text-lg mt-0.5 text-slate-500"
-            />
-            {!!tooltip && showTooltip && (
+            {!!tooltip && (
+              <div className="tooltip" data-tip={tooltip}>
+                <BiInfoCircle
+                  fill="rgb(148 163 184)"
+                  onPointerEnter={() => {
+                    setShowTooltip(true);
+                  }}
+                  onPointerLeave={() => {
+                    setShowTooltip(false);
+                  }}
+                  onMouseEnter={() => {
+                    setShowTooltip(true);
+                  }}
+                  onMouseLeave={() => {
+                    setShowTooltip(false);
+                  }}
+                  className="cursor-pointer text-lg mt-0.5 text-slate-500"
+                />
+                {/* {!!tooltip && showTooltip && (
               <div
-                className="absolute left-1/2 -translate-x-1/2 py-2 px-3 text-center shadow bg-slate-600 text-white rounded text-sm z-50"
+                className="absolute left-1/2 -translate-x-1/2 py-2 px-3 text-center shadow bg-primary text-white rounded text-sm z-50"
                 style={{
-                  bottom: "calc(100% + 5px)",
+                  bottom: "100%",
                   maxWidth: 250,
                   minWidth: 125,
                 }}
               >
                 {tooltip}
+              </div>
+            )} */}
               </div>
             )}
           </div>
