@@ -4,6 +4,7 @@ import {
   BiChevronUp,
   BiDotsVerticalRounded,
   BiEditAlt,
+  BiPlus,
   BiTrash,
 } from "react-icons/bi";
 import { RiSettings3Line } from "react-icons/ri";
@@ -55,30 +56,35 @@ export const TreeElement: React.FC<TreeElementProps> = ({ depth, data }) => {
           </div>
           {showToolbar && (
             <div className="flex gap-2">
-              <button className="flex-shrink-0 items-center aspect-square text-xl">
+              <button className="flex-shrink-0 items-center aspect-square text-lg">
                 <BiEditAlt />
               </button>
-              <button className="flex-shrink-0 items-center aspect-square text-xl">
+              <button className="flex-shrink-0 items-center aspect-square text-lg">
                 <RiSettings3Line
                   onClick={() => {
                     setShowSettings((prev) => !prev);
                   }}
                 />
               </button>
-              <button className="flex-shrink-0 items-center aspect-square text-xl">
+              <button className="flex-shrink-0 items-center aspect-square text-lg">
                 <BiTrash />
               </button>
             </div>
           )}
           {hasChildren && (
-            <button
-              className="ml-5 flex-shrink-0 text-2xl hover:btn-primary focus:ring-2 focus:ring-primary transition-colors duration-100 ease"
-              onClick={() => {
-                setShowChildren((prev) => !prev);
-              }}
-            >
-              {showChildren ? <BiChevronUp /> : <BiChevronDown />}
-            </button>
+            <div className="flex gap-2 ml-3">
+              <button className=" flex-shrink-0 text-2xl">
+                <BiPlus />
+              </button>
+              <button
+                className="flex-shrink-0 text-2xl hover:btn-primary focus:ring-2 focus:ring-primary transition-colors duration-100 ease"
+                onClick={() => {
+                  setShowChildren((prev) => !prev);
+                }}
+              >
+                {showChildren ? <BiChevronUp /> : <BiChevronDown />}
+              </button>
+            </div>
           )}
         </div>
         <div className="collapse-content bg-base-100" data-theme="black">
