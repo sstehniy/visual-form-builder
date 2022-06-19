@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren } from "react";
+import { createContext, PropsWithChildren, useContext } from "react";
 import { useImmerReducer } from "use-immer";
 import { stateReducer } from "./reducer";
 import { FORM_STATE, State, StateAction } from "./types";
@@ -17,7 +17,7 @@ type StateProviderContextType = {
 const StateProviderContext = createContext(
   null as unknown as StateProviderContextType
 );
-
+export const useBuilderState = () => useContext(StateProviderContext);
 export const StateProvider: React.FC<PropsWithChildren<unknown>> = ({
   children,
 }) => {

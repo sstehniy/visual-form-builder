@@ -4,9 +4,9 @@ import { InputWrapper } from "./InputWrapper";
 
 export const CheckBox = forwardRef<
   HTMLInputElement,
-  Omit<InputProps, "icon" | "size"> & { direction: "vertical" | "horizontal" }
+  Omit<InputProps, "icon" | "size">
 >((props, ref) => {
-  const { data, name, style, direction } = props;
+  const { data, name, style } = props;
 
   if (!data) return null;
 
@@ -21,10 +21,7 @@ export const CheckBox = forwardRef<
             style={{ ...props.style }}
           />
         </div> */}
-      <div
-        className={`flex gap-1 ${direction === "vertical" ? "flex-col" : ""}`}
-        style={{ ...style }}
-      >
+      <div className={`flex gap-1`} style={{ ...style }}>
         {data.map((val, idx) => {
           return (
             <div className="form-control" key={`${name}_${idx}`}>

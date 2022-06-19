@@ -1,14 +1,22 @@
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { AiFillBuild } from "react-icons/ai";
 import { Button } from "../components/Button";
+import { useBuilderState } from "../state/StateProvider";
+import { FORM_STATE, StateActionType } from "../state/types";
+import { FormTitleCreate } from "./FormTitleCreate";
+import { ElementTree } from "./ElementTree";
 
 export const SideDrawer: React.FC = () => {
+  const {
+    state: { formState },
+    dispatch,
+  } = useBuilderState();
   return (
     <div
-      className="h-full bg-slate-5 sticky top-0 shrink-0"
+      className="h-screen sticky top-0 shrink-0 bg-base-200"
       style={{ width: "clamp(300px, 25%, 335px)" }}
     >
-      <div className="shadow-md py-4 mb-5 flex gap-2 items-center pl-12 text-zinc-700">
+      <div className="shadow py-4 flex justify-center gap-2 items-center text-primary">
         <AiFillBuild className="text-4xl" />
         <h2 className="text-center  tracking-wide leading-2 font-medium  text-2xl">
           Form Builder
@@ -23,27 +31,38 @@ export const SideDrawer: React.FC = () => {
           <IoMdAddCircleOutline />
         </span>
       </button> */}
-      <div className="px-3">
-        <Button
-          onClick={() => {
-            console.log("clicked");
-          }}
-          size="normal"
-          text="Create Form"
-          icon={{
-            icon: IoMdAddCircleOutline,
-            position: "after",
-            className: "text-xl",
-          }}
-          className="relative btn-block btn-primary focus:ring-primary"
-        />
-      </div>
-      <div
-        className="mt-3 w-100"
-        style={{ maxHeight: "calc(100% - 138px)", overflow: "auto" }}
-      >
-        <ul className="py-4"></ul>
-      </div>
+      {formState === FORM_STATE.NOT_INITIALIZED && (
+        <div className="px-3 mt-5">
+          <Button
+            size="normal"
+            text="Create Form"
+            icon={{
+              icon: IoMdAddCircleOutline,
+              position: "after",
+              className: "text-xl",
+            }}
+            onClick={() =>
+              dispatch({
+                type: StateActionType.START_INITIALIZE_FORM,
+              })
+            }
+            className="relative btn-block btn-primary focus:ring-primary"
+          />
+        </div>
+      )}
+      {formState === FORM_STATE.INITIALIZED && (
+        <div className="px-3 mt-5">
+          <FormTitleCreate />
+        </div>
+      )}
+      {formState === FORM_STATE.EDIT && (
+        <div
+          className="w-full bg-transparent"
+          style={{ maxHeight: "calc(100% - 138px)", overflow: "auto" }}
+        >
+          <ElementTree />
+        </div>
+      )}
     </div>
   );
 };

@@ -58,7 +58,7 @@ export const DateInput = forwardRef<HTMLInputElement, Omit<InputProps, "icon">>(
 
     const getIconProps = (size: ElementSize) => {
       const iconClassname =
-        "absolute top-0 bottom-0 flex items-center justify-center shrink-0 opacity-50 p-1.5  hrink-0 z-10";
+        "absolute top-0 bottom-0 flex items-center justify-center shrink-0  p-1.5  hrink-0 z-10";
       let iconSizeClassname!: string;
 
       switch (size) {

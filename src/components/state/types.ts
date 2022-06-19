@@ -66,7 +66,7 @@ export type ComplexValue = { value: string | number | null; label: string };
 
 export type InputDataType = {
   uid: string;
-  inputType: InputType;
+  type: InputType;
   name: string;
   label: string;
   additionalAttrs?: InputAttribute;
@@ -77,23 +77,26 @@ export type InputDataType = {
   size: ElementSize;
   validation: ValidationRules[] | null;
   tooltip?: string;
-  parent: ContainerDataType | null;
+  parentUid: string;
 };
 
-export type InputProps = Omit<InputDataType, "uid" | "inputType">;
+export type InputProps = Omit<InputDataType, "uid" | "type">;
 
 export type TextDataType = {
   uid: string;
-  textType: TextType;
+  type: TextType;
   style: CSSProperties | null;
+  parentUid: string;
+  name: string;
 };
 
 export type ContainerDataType = {
   uid: string;
-  containerType: ContainerType;
+  type: ContainerType;
   children: Component[];
-  style: CSSProperties | null;
-  name?: string;
+  style?: CSSProperties | null;
+  parentUid: string | null;
+  name: string;
 };
 
 export type Component = InputDataType | ContainerDataType | TextDataType;
@@ -143,6 +146,6 @@ export type StateAction =
       type:
         | StateActionType.UNDO_CHANGE
         | StateActionType.START_INITIALIZE_FORM
-        | StateActionType.FINISH_INITIALIZE_FORM
         | StateActionType.RESET_FORM;
-    };
+    }
+  | { type: StateActionType.FINISH_INITIALIZE_FORM; data: string };

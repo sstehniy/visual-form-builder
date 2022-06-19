@@ -17,14 +17,14 @@ export const SelectInput = forwardRef<
   const [showOptions, setShowOptions] = useState(false);
 
   const getInputClassame = () => {
-    const baseStyle = `w-full border-2 bg-white pr-12 input-md`;
+    const baseStyle = `w-full border-2 bg-primary-content pr-12 input-md`;
     let sizeClassnames!: string;
 
     return baseStyle + " " + sizeClassnames;
   };
 
   const getIconProps = () => {
-    const iconClassname = `absolute top-1/2 -translate-y-1/2  flex items-center justify-center shrink-0 opacity-50 z-10 aspect-square right-0 rounded-full p-1.5 cursor-pointer text-xl right-3 ${
+    const iconClassname = `absolute top-1/2 -translate-y-1/2  flex items-center justify-center shrink-0  z-10 aspect-square right-0 rounded-full p-1.5 cursor-pointer text-xl right-3 ${
       showOptions ? "rotate-180" : ""
     } transition-transform duration-300 ease`;
 

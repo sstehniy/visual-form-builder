@@ -53,7 +53,7 @@ export const PasswordInput = forwardRef<
 
   const getIconProps = (size: ElementSize) => {
     const iconClassname =
-      "absolute top-1/2 -translate-y-1/2  flex items-center justify-center shrink-0 z-10 aspect-square right-0 rounded-full p-1.5 hover:bg-slate-300 cursor-pointer opacity-50 transition-colors duration-150 ease";
+      "absolute top-1/2 -translate-y-1/2  flex items-center justify-center shrink-0 z-10 aspect-square right-0 rounded-full p-1.5 hover:bg-base-300 cursor-pointer  transition-colors duration-150 ease";
     let iconSizeClassname!: string;
 
     switch (size) {
@@ -81,6 +81,7 @@ export const PasswordInput = forwardRef<
         <input
           type={showPassword ? "text" : "password"}
           ref={ref}
+          autoComplete="new-password"
           className={`input input-bordered focus:input-primary ${getInputClassame(
             size
           )}`}

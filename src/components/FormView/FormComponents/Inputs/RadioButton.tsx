@@ -4,9 +4,9 @@ import { InputWrapper } from "./InputWrapper";
 
 export const RadioButton = forwardRef<
   HTMLInputElement,
-  Omit<InputProps, "icon" | "size"> & { direction: "vertical" | "horizontal" }
+  Omit<InputProps, "icon" | "size">
 >((props, ref) => {
-  const { data, name, style, direction } = props;
+  const { data, name, style } = props;
 
   if (!data) return null;
 
@@ -21,17 +21,14 @@ export const RadioButton = forwardRef<
             style={{ ...props.style }}
           />
         </div> */}
-      <div
-        className={`flex gap-2 ${direction === "vertical" ? "flex-col" : ""}`}
-        style={{ ...style }}
-      >
+      <div className={`flex gap-1`} style={{ ...style }}>
         {data.map((val, idx) => {
           return (
             <div className="form-control" key={`${name}_${idx}`}>
               <label htmlFor={`${name}_${val.value}`} className="label">
                 <input
                   type="radio"
-                  className={`radio radio-primary`}
+                  className={`radio radio-primary radio-sm`}
                   value={val.value || ""}
                   name={name}
                   id={`${name}_${val.value}`}

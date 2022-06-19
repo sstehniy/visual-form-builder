@@ -79,7 +79,7 @@ export const NumberInput = forwardRef<HTMLInputElement, InputProps>(
     const getIconProps = (size: ElementSize, icon: InputDataType["icon"]) => {
       if (!icon) return "";
       const iconClassname =
-        "absolute top-0 bottom-0 flex items-center justify-center shrink-0  opacity-50  z-10 aspect-square";
+        "absolute top-0 bottom-0 flex items-center justify-center shrink-0    z-10 aspect-square";
       let iconSizeClassname!: string;
       let iconPositionSpecificClassname!: string;
       switch (size) {

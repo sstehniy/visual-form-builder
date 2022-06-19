@@ -21,7 +21,6 @@ export const InputWrapper: React.FC<
             {!!tooltip && (
               <div className="tooltip" data-tip={tooltip}>
                 <BiInfoCircle
-                  fill="rgb(148 163 184)"
                   onPointerEnter={() => {
                     setShowTooltip(true);
                   }}
@@ -34,20 +33,8 @@ export const InputWrapper: React.FC<
                   onMouseLeave={() => {
                     setShowTooltip(false);
                   }}
-                  className="cursor-pointer text-lg mt-0.5 text-slate-500"
+                  className="cursor-pointer text-lg mt-0.5 opacity-60"
                 />
-                {/* {!!tooltip && showTooltip && (
-              <div
-                className="absolute left-1/2 -translate-x-1/2 py-2 px-3 text-center shadow bg-primary text-white rounded text-sm z-50"
-                style={{
-                  bottom: "100%",
-                  maxWidth: 250,
-                  minWidth: 125,
-                }}
-              >
-                {tooltip}
-              </div>
-            )} */}
               </div>
             )}
           </div>
