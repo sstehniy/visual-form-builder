@@ -11,6 +11,7 @@ export type State = {
   components: Component[];
   actionsLog: ActionLog[];
   formState: FORM_STATE;
+  selectedElement: Component | null;
 };
 
 export enum InputType {
@@ -35,12 +36,9 @@ export enum ContainerType {
 
 export enum TextType {
   PARAGRAPH,
-  H1,
-  H2,
   H3,
   H4,
   H5,
-  H6,
 }
 
 export type InputAttribute = Record<string, string | number | boolean>;
@@ -123,6 +121,7 @@ export type StateAction =
   | {
       type: StateActionType.CREATE_COMPONENT;
       data: {
+        parentUid: string;
         type: InputType | ContainerType | TextType;
       };
     }

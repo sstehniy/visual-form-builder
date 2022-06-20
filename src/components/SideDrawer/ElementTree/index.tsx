@@ -14,8 +14,8 @@ export const ElementTree: React.FC = () => {
   }
 
   return (
-    <div className="w-full">
+    <ol className="list-none m-0 p-0">
       <TreeElement data={rootElement} depth={0} />
-    </div>
+    </ol>
   );
 };

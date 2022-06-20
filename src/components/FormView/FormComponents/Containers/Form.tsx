@@ -93,7 +93,7 @@ export const Form: React.FC<ContainerDataType> = (data) => {
     <form
       style={{ ...style, width: 425 }}
       autoComplete="off"
-      className="bg-primary-content rounded-xl shadow-xl p-8 prose"
+      className="bg-primary-content rounded-md shadow-xl p-8 prose"
     >
       <h2 className="mb-2 text-center">{formTitle}</h2>
       {children.map((child) => (

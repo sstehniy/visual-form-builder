@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
 // eslint-disable-next-line no-undef
+const plugin = require("tailwindcss/plugin");
+
 module.exports = {
   content: [
     "./index.html",
@@ -18,7 +21,26 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("daisyui"),
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        ".scrollbar-none": {
+          /* IE and Edge */
+          "-ms-overflow-style": "none",
+
+          /* Firefox */
+          "scrollbar-width": "none",
+
+          /* Safari and Chrome */
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        },
+      });
+    }),
+  ],
   daisyui: {
     styled: true,
     themes: ["lofi", "black"],

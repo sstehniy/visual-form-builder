@@ -7,6 +7,7 @@ const initialState: State = {
   components: [],
   actionsLog: [],
   formState: FORM_STATE.NOT_INITIALIZED,
+  selectedElement: null,
 };
 
 type StateProviderContextType = {

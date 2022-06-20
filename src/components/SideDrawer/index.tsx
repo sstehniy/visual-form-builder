@@ -13,12 +13,12 @@ export const SideDrawer: React.FC = () => {
   } = useBuilderState();
   return (
     <div
-      className="h-screen sticky top-0 shrink-0 bg-base-200"
+      className="h-screen sticky top-0 shrink-0 bg-base-200 prose"
       style={{ width: "clamp(300px, 25%, 335px)" }}
     >
       <div className="shadow py-4 flex justify-center gap-2 items-center text-primary">
         <AiFillBuild className="text-4xl" />
-        <h2 className="text-center  tracking-wide leading-2 font-medium  text-2xl">
+        <h2 className="text-center  tracking-wide leading-2 font-medium  text-2xl m-0">
           Form Builder
         </h2>
       </div>
