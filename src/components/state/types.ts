@@ -67,14 +67,14 @@ export type InputDataType = {
   type: InputType;
   name: string;
   label: string;
-  additionalAttrs?: InputAttribute;
-  style?: CSSProperties;
-  wrapperStyle?: CSSProperties;
-  data?: ComplexValue[];
-  icon?: InputIconData;
+  additionalAttrs: InputAttribute;
+  style: CSSProperties;
+  wrapperStyle: CSSProperties;
+  data: ComplexValue[];
+  icon: InputIconData | null;
   size: ElementSize;
   validation: ValidationRules[] | null;
-  tooltip?: string;
+  tooltip: string | null;
   parentUid: string;
 };
 
@@ -83,7 +83,7 @@ export type InputProps = Omit<InputDataType, "uid" | "type">;
 export type TextDataType = {
   uid: string;
   type: TextType;
-  style: CSSProperties | null;
+  style: CSSProperties;
   parentUid: string;
   name: string;
 };
@@ -92,7 +92,7 @@ export type ContainerDataType = {
   uid: string;
   type: ContainerType;
   children: Component[];
-  style?: CSSProperties | null;
+  style: CSSProperties;
   parentUid: string | null;
   name: string;
 };
@@ -138,7 +138,8 @@ export type StateAction =
   | {
       type: StateActionType.EDIT_COMPONENT;
       data: {
-        component: Component;
+        changes: { [key: string]: any };
+        uid: string;
       };
     }
   | {

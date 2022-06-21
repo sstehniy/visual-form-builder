@@ -58,7 +58,7 @@ export const SideDrawer: React.FC = () => {
       {formState === FORM_STATE.EDIT && (
         <div
           className="w-full bg-transparent"
-          style={{ maxHeight: "calc(100% - 138px)", overflow: "auto" }}
+          style={{ maxHeight: "calc(100% - 70px)", overflow: "auto" }}
         >
           <ElementTree />
         </div>

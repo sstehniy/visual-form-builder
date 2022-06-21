@@ -68,13 +68,14 @@ export const SelectInput = forwardRef<
 
         <ul
           tabIndex={0}
-          className={`dropdown-content  menu p-2 shadow-2xl bg-base-100 rounded-md ring-2 ring-primary w-3/4 max-h-44 overflow-y-scroll ${
+          className={`dropdown-content  p-0  menu shadow-lg bg-base-100 rounded-md w-full max-h-44 overflow-y-scroll ${
             !showOptions ? "hidden" : ""
-          } top-14 left-0.5`}
+          } top-14`}
         >
           {[defaultValue, ...data].map((val) => (
             <li
               key={`${name}_select_${val.value}`}
+              className="p-0 m-0"
               onClick={() => {
                 setShowOptions(false);
                 setSelectedValue(val);

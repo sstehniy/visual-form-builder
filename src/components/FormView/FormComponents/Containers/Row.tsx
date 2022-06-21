@@ -87,7 +87,7 @@ export const Row: React.FC<ContainerDataType> = (data) => {
     return renderElement;
   };
   return (
-    <div style={{ ...style }} className="flex flex-nowrap w-full gap-2">
+    <div style={{ ...style }} className="flex flex-nowrap w-full gap-4">
       {children.map((child) => (
         <div key={child.uid} className="flex-1">
           {getFormElement(child)}
