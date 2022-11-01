@@ -1,5 +1,6 @@
-import { CSSProperties } from "react";
+import { CSSProperties, InputHTMLAttributes } from "react";
 import { IconType } from "react-icons";
+import { StateComponentAttribute } from "../SideDrawer/EditAttributesModal/constants";
 
 export enum FORM_STATE {
   NOT_INITIALIZED,
@@ -41,7 +42,7 @@ export enum TextType {
   H5,
 }
 
-export type InputAttribute = Record<string, string | number | boolean>;
+export type InputAttributes = InputHTMLAttributes<HTMLInputElement>;
 
 export type InputIconData = {
   icon: IconType;
@@ -60,14 +61,14 @@ export enum ElementSize {
   LARGE,
 }
 
-export type ComplexValue = { value: string | number | null; label: string };
+export type ComplexValue = { value: any; label: string };
 
 export type InputDataType = {
   uid: string;
   type: InputType;
   name: string;
   label: string;
-  additionalAttrs: InputAttribute;
+  additionalAttrs: InputAttributes;
   style: CSSProperties;
   wrapperStyle: CSSProperties;
   data: ComplexValue[];
@@ -115,6 +116,7 @@ export enum StateActionType {
   START_INITIALIZE_FORM,
   FINISH_INITIALIZE_FORM,
   RESET_FORM,
+  SET_COMPONENT_ATTRIBUTE,
 }
 
 export type StateAction =
@@ -148,4 +150,11 @@ export type StateAction =
         | StateActionType.START_INITIALIZE_FORM
         | StateActionType.RESET_FORM;
     }
-  | { type: StateActionType.FINISH_INITIALIZE_FORM; data: string };
+  | { type: StateActionType.FINISH_INITIALIZE_FORM; data: string }
+  | {
+      type: StateActionType.SET_COMPONENT_ATTRIBUTE;
+      data: {
+        componentId: string;
+        attributeData: StateComponentAttribute;
+      };
+    };

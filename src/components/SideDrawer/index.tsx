@@ -22,15 +22,6 @@ export const SideDrawer: React.FC = () => {
           Form Builder
         </h2>
       </div>
-      {/* <button
-        className="flex justify-center items-center gap-3 relative w-64 mx-auto bg-gradient-to-r from-sky-500 to-indigo-500 h-12 rounded-md text-white shadow-md"
-        type="button"
-      >
-        <span className="text-xl leading-8 font-medium">Create Form</span>
-        <span className="inline-block text-2xl">
-          <IoMdAddCircleOutline />
-        </span>
-      </button> */}
       {formState === FORM_STATE.NOT_INITIALIZED && (
         <div className="px-3 mt-5">
           <Button

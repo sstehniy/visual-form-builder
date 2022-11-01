@@ -3,7 +3,6 @@ import {
   BiChevronDown,
   BiChevronUp,
   BiDotsVertical,
-  BiEditAlt,
   BiPlus,
   BiTrash,
 } from "react-icons/bi";
@@ -11,7 +10,7 @@ import { FaCheck, FaTimes } from "react-icons/fa";
 import { useBuilderState } from "../../state/StateProvider";
 import { Component, ContainerType, StateActionType } from "../../state/types";
 import { AddItemsModal } from "../AddItemsModal";
-import { EditModal } from "../EditModal";
+import { EditAttributesModal } from "../EditAttributesModal";
 import { ActiveContent, useTreeContext } from "./TreeContextProvider";
 
 type TreeElementProps = {
@@ -144,17 +143,19 @@ export const TreeElement: React.FC<TreeElementProps> = ({ depth, data }) => {
                 >
                   <BiDotsVertical />
                 </button>
-                <button
-                  className="flex-shrink-0 h-full items-center text-lg p-1.5"
-                  onClick={() =>
-                    dispatch({
-                      type: StateActionType.REMOVE_COMPONENT,
-                      data: { uid: data.uid },
-                    })
-                  }
-                >
-                  <BiTrash />
-                </button>
+                {depth > 0 && (
+                  <button
+                    className="flex-shrink-0 h-full items-center text-lg p-1.5"
+                    onClick={() =>
+                      dispatch({
+                        type: StateActionType.REMOVE_COMPONENT,
+                        data: { uid: data.uid },
+                      })
+                    }
+                  >
+                    <BiTrash />
+                  </button>
+                )}
               </div>
               {hasChildren && (
                 <div className="flex flex-shrink-0 gap-1 mx-1 items-center h-full ">
@@ -197,7 +198,7 @@ export const TreeElement: React.FC<TreeElementProps> = ({ depth, data }) => {
             activeContent?.uid === data.uid &&
             activeContent.type === ActiveContent.EDIT_ELEMENT
           ) && (
-            <EditModal
+            <EditAttributesModal
               element={data}
               onClose={() =>
                 handleSetActiveContent({

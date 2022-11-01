@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { cloneDeep } from "lodash";
-import { MdAllInbox } from "react-icons/md";
 import { v4 } from "uuid";
 import { flat } from "../../util/flat";
 import {
@@ -75,6 +74,10 @@ export const stateReducer = (state: State, action: StateAction): State => {
       };
       state.components = [form];
       state.formState = FORM_STATE.EDIT;
+      break;
+    }
+    case StateActionType.SET_COMPONENT_ATTRIBUTE: {
+      const { componentId, attributeData } = action.data;
       break;
     }
     case StateActionType.CREATE_COMPONENT: {

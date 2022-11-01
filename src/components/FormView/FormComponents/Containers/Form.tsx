@@ -91,7 +91,7 @@ export const Form: React.FC<ContainerDataType> = (data) => {
 
   return (
     <form
-      style={{ ...style, width: 425 }}
+      style={{ ...style, width: 425, height: "clamp(400px, 80%, 700px)" }}
       autoComplete="off"
       className="bg-primary-content rounded-md shadow-xl p-8 prose"
     >

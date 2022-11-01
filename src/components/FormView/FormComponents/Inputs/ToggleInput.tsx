@@ -9,17 +9,7 @@ export const ToggleInput = forwardRef<
   const { label, style } = props;
 
   return (
-    <InputWrapper {...props} label="">
-      {/* <div className="relative flex w-100">
-          <input
-            type="number"
-            ref={ref}
-            className={getInputClassame(size)}
-            {...additionalAttrs}
-            style={{ ...props.style }}
-          />
-        </div> */}
-
+    <InputWrapper {...props}>
       <div className="form-control" style={{ ...style }}>
         <label className="label cursor-pointer">
           <span className="label-text">{label}</span>
