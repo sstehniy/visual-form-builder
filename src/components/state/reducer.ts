@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { cloneDeep } from "lodash";
+import cloneDeep from "lodash/cloneDeep";
 import { v4 } from "uuid";
+import { attributesByType } from "../../constants";
 import { flat } from "../../util/flat";
 import {
   ContainerDataType,
@@ -71,13 +72,14 @@ export const stateReducer = (state: State, action: StateAction): State => {
         uid: formUid,
         style: {},
         children: [],
+        attributes: [],
       };
       state.components = [form];
       state.formState = FORM_STATE.EDIT;
       break;
     }
-    case StateActionType.SET_COMPONENT_ATTRIBUTE: {
-      const { componentId, attributeData } = action.data;
+    case StateActionType.EDIT_COMPONENT_ATTRIBUTE: {
+      const { attribute, element, value } = action.data;
       break;
     }
     case StateActionType.CREATE_COMPONENT: {
@@ -113,6 +115,11 @@ export const stateReducer = (state: State, action: StateAction): State => {
             style: {},
             tooltip: "",
             wrapperStyle: {},
+            attributes:
+              attributesByType[type]?.map((attr) => ({
+                ...attr,
+                uid: v4(),
+              })) || [],
           } as InputDataType;
           break;
         }
@@ -133,6 +140,11 @@ export const stateReducer = (state: State, action: StateAction): State => {
             style: {},
             tooltip: "",
             wrapperStyle: {},
+            attributes:
+              attributesByType[type]?.map((attr) => ({
+                ...attr,
+                uid: v4(),
+              })) || [],
           } as InputDataType;
           break;
         }
@@ -145,6 +157,11 @@ export const stateReducer = (state: State, action: StateAction): State => {
             style: {},
             type,
             uid,
+            attributes:
+              attributesByType[type]?.map((attr) => ({
+                ...attr,
+                uid: v4(),
+              })) || [],
           } as ContainerDataType;
           break;
         }
@@ -158,6 +175,11 @@ export const stateReducer = (state: State, action: StateAction): State => {
             style: {},
             type,
             uid,
+            attributes:
+              attributesByType[type]?.map((attr) => ({
+                ...attr,
+                uid: v4(),
+              })) || [],
           } as TextDataType;
           break;
         }

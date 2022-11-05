@@ -127,22 +127,24 @@ export const TreeElement: React.FC<TreeElementProps> = ({ depth, data }) => {
           {showToolbar && (
             <>
               <div className="flex h-full">
-                <button
-                  className={`flex-shrink-0 h-full items-center text-lg px-1.5 ${
-                    activeContent?.type === ActiveContent.EDIT_ELEMENT &&
-                    activeContent.uid === data.uid
-                      ? "bg-primary text-primary-content"
-                      : ""
-                  }`}
-                  onClick={() => {
-                    handleSetActiveContent({
-                      type: ActiveContent.EDIT_ELEMENT,
-                      uid: data.uid,
-                    });
-                  }}
-                >
-                  <BiDotsVertical />
-                </button>
+                {depth > 0 && (
+                  <button
+                    className={`flex-shrink-0 h-full items-center text-lg px-1.5 ${
+                      activeContent?.type === ActiveContent.EDIT_ELEMENT &&
+                      activeContent.uid === data.uid
+                        ? "bg-primary text-primary-content"
+                        : ""
+                    }`}
+                    onClick={() => {
+                      handleSetActiveContent({
+                        type: ActiveContent.EDIT_ELEMENT,
+                        uid: data.uid,
+                      });
+                    }}
+                  >
+                    <BiDotsVertical />
+                  </button>
+                )}
                 {depth > 0 && (
                   <button
                     className="flex-shrink-0 h-full items-center text-lg p-1.5"
@@ -175,14 +177,16 @@ export const TreeElement: React.FC<TreeElementProps> = ({ depth, data }) => {
                   >
                     <BiPlus />
                   </button>
-                  <button
-                    className="text-2xl h-full w-6"
-                    onClick={() => {
-                      setShowChildren((prev) => !prev);
-                    }}
-                  >
-                    {showChildren ? <BiChevronUp /> : <BiChevronDown />}
-                  </button>
+                  {!!data.children.length && (
+                    <button
+                      className="text-2xl h-full w-6"
+                      onClick={() => {
+                        setShowChildren((prev) => !prev);
+                      }}
+                    >
+                      {showChildren ? <BiChevronUp /> : <BiChevronDown />}
+                    </button>
+                  )}
                 </div>
               )}
             </>
@@ -190,7 +194,7 @@ export const TreeElement: React.FC<TreeElementProps> = ({ depth, data }) => {
         </div>
 
         <div
-          className={`w-full collapse-content bg-base-100 overflow-y-scroll`}
+          className={`w-full collapse-content bg-base-100 overflow-y-scroll overflow-visible`}
           style={{ zIndex: 10000 }}
           data-theme="black"
         >

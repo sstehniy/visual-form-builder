@@ -1,6 +1,7 @@
 import { createContext, PropsWithChildren, useContext } from "react";
 import { useImmerReducer } from "use-immer";
 import { stateReducer } from "./reducer";
+import { initialStateDev } from "./static_dev";
 import { FORM_STATE, State, StateAction } from "./types";
 
 const initialState: State = {
@@ -9,6 +10,8 @@ const initialState: State = {
   formState: FORM_STATE.NOT_INITIALIZED,
   selectedElement: null,
 };
+
+const finalInitialState = import.meta.env.DEV ? initialStateDev : initialState;
 
 type StateProviderContextType = {
   state: State;
@@ -22,7 +25,9 @@ export const useBuilderState = () => useContext(StateProviderContext);
 export const StateProvider: React.FC<PropsWithChildren<unknown>> = ({
   children,
 }) => {
-  const [state, dispatch] = useImmerReducer(stateReducer, initialState);
+  const [state, dispatch] = useImmerReducer(stateReducer, finalInitialState);
+
+  console.log(state);
   return (
     <StateProviderContext.Provider value={{ state, dispatch }}>
       {children}

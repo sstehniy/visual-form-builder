@@ -1,6 +1,10 @@
-import { ElementSize, InputIconData, InputType } from "../../state/types";
+import {
+  ElementSize,
+  InputIconData,
+  InputType,
+} from "./components/state/types";
 
-enum AttributeInputType {
+export enum AttributeInputType {
   DEFINE_VALUES,
   SELECT_OPTION,
   TEXT,
@@ -16,7 +20,7 @@ type ComponentAttributeBase = {
   sourcePropsKey: string;
 };
 
-type KeyValue = {
+export type KeyValue = {
   label: string;
   value: string | number | boolean;
 };
@@ -87,7 +91,7 @@ export const attributesByType: Record<string, ComponentAttribute[]> = {
     {
       type: AttributeInputType.TEXT,
       decorationIcon: null,
-      value: "Default Input Label",
+      value: "Text input",
       sourcePropsKey: "label",
       title: "Label",
     },
