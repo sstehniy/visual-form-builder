@@ -1,6 +1,6 @@
 import { CSSProperties, InputHTMLAttributes } from "react";
 import { IconType } from "react-icons";
-import { ComponentAttribute, StateComponentAttribute } from "../../constants";
+import { StateComponentAttribute } from "../../constants";
 
 export enum FORM_STATE {
   NOT_INITIALIZED,

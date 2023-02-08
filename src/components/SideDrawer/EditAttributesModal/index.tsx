@@ -46,7 +46,6 @@ export const EditAttributesModal: React.FC<EditAttributesModalProps> = ({
           <div className="form-control w-full max-w-xs" key={attribute.uid}>
             <label className="label  mb-0 pb-1 px-0.5">
               <span className="label-text  text-xs">{attribute.title}</span>
-              {/* <span className="label-text-alt">Alt label</span> */}
             </label>
             <input
               type="text"
@@ -180,8 +179,9 @@ export const EditAttributesModal: React.FC<EditAttributesModalProps> = ({
           />
         );
       }
+      default:
+        return null;
     }
-    return null;
   };
 
   return (
